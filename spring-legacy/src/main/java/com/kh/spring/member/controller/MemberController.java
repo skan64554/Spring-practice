@@ -37,12 +37,10 @@ public class MemberController {
 	 *  객체(bean)를 주입받아서 생성하는 방식
 	 *  - new연산자를 직접 사용하지 않고, Autowired 어노테이션을 통해 주입받는다.
 	 */
-	@RequestMapping(value = "/login"  , method=RequestMethod.GET)
+	@RequestMapping(value = "/login" , method=RequestMethod.GET)
 	public String loginMember() {
 		return "member/login";
 	}
-	
-	
 //	public String login(HttpServletRequest req) {
 //		System.out.println(req.getParameter("userId"));
 //		System.out.println(req.getParameter("userPwd"));
