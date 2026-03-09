@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/border")
 @RequiredArgsConstructor
 public class BoardController {
 	
@@ -31,32 +31,21 @@ public class BoardController {
 	private final ResourceLoader resourceLoader;
 	private final ServletContext application; // application scope
 
-
-	@PostConstruct
-	public void init() {
-		// key=코드 , value=게시판이름
-		Map<String, String> boardTypeMap
-			= boardService.getBoardTypeMap();
-		application.setAttribute("boardTypeMap", boardTypeMap);
-		log.debug("boardTypeMap : {}" , boardTypeMap);
-	}
-
-	
 	@GetMapping("/list")
 	public String selectBoardList(Model model) {
-		
+	
 		List<Board> list = boardService.selectBoardList();
 		
 		model.addAttribute("list", list);
 		
-		return "board/boardList";
+		return "border/list";
 	}
 	
 	 // 글작성 페이지
     @GetMapping("/insert")
     public String insertPage(){
 
-        return "board/list";
+        return "border/insert";
     }
 
     // 글 등록
@@ -65,7 +54,7 @@ public class BoardController {
 
         boardService.insertBoard(board);
 
-        return "redirect:/list";
+        return "redirect:/board/list";
     }
 
     // 상세조회
@@ -76,7 +65,7 @@ public class BoardController {
 
         model.addAttribute("board", board);
 
-        return "board/detail";
+        return "border/detail";
     }
 
 
