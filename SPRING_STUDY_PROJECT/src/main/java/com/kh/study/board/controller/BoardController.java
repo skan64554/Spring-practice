@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/border")
+@RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
 	
@@ -38,14 +38,14 @@ public class BoardController {
 		
 		model.addAttribute("list", list);
 		
-		return "border/list";
+		return "board/list";
 	}
 	
 	 // 글작성 페이지
     @GetMapping("/insert")
     public String insertPage(){
 
-        return "border/insert";
+        return "board/insert";
     }
 
     // 글 등록
@@ -65,7 +65,7 @@ public class BoardController {
 
         model.addAttribute("board", board);
 
-        return "border/detail";
+        return "board/detail";
     }
 
 
